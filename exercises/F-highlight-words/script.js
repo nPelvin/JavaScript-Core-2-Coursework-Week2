@@ -1,5 +1,45 @@
 function highlightWords(paragraph, colours) {
-  // Write your code here...
+// store paragraph as array
+let paragraphArray = paragraph.split(' ');
+
+//create elements
+pEl = document.createElement("p");
+selectEl = document.createElement("select");
+
+// position elements
+contentLoc = document.getElementById("content");
+contentLoc.appendChild(pEl);
+contentLoc.appendChild(selectEl);
+
+//create dropdown menu
+function optionCreation(elem){
+let optionEl = document.createElement("option");
+selectEl.appendChild(optionEl);
+optionEl.innerHTML=elem;
+optionEl.value=elem;
+}
+
+
+//create paragraph function and event listeners
+function paraCallback(elem){
+let spanEl = document.createElement("span");
+pEl.appendChild(spanEl);
+spanEl.innerHTML=elem + " ";
+spanEl.addEventListener("click", function () {
+if(spanEl.style.backgroundColor===selectEl.value ||
+   selectEl.value==="none"){
+spanEl.style.backgroundColor="initial";
+}
+else {
+spanEl.style.backgroundColor=selectEl.value;
+}
+})
+}
+
+// call functions
+paragraphArray.forEach(paraCallback);
+colours.forEach(optionCreation);
+
 }
 
 const paragraph =
@@ -7,4 +47,4 @@ const paragraph =
 
 const colours = ["yellow", "green", "blue", "none"];
 
-highlightWords(paragraph, colours);
+highlightWords(paragraph, colours); 

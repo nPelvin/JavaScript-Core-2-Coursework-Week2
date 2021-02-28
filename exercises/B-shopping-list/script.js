@@ -1,5 +1,6 @@
 function shoppingList(arrayOfPeople) {
-  // Write your code here...
+var el = document.getElementById("content");
+el.innerHTML=arrayOfPeople;
 }
 
 let shopping = ["Milk", "Bread", "Eggs", "A Dinosaur", "Cake", "Sugar", "Tea"];
